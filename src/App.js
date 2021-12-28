@@ -15,12 +15,11 @@ class App extends Component {
     <Router>
       <Header />
       <div className="App">
-        <h2> MERN-Stack Todo App </h2>
-
+      
       <Routes>
-        <Route path="/" exact component={TodosList} />
-        <Route path="/edit/:id" component={EditTodo} />
-        <Route path="/create" component={CreateTodo} />
+        <Route path="/" exact element={<TodosList />} />
+        <Route path="/edit/:id" element={<EditTodo />} />
+        <Route path="/create" element={<CreateTodo />} />
       </Routes>
       </div>
     </Router>
