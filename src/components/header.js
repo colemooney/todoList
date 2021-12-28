@@ -28,10 +28,11 @@ const Header = () =>{
       <AppBar position="static">
         <Toolbar>
           
-           
+           <Link to="/">
           <Typography variant="h6" className={classes.title}>
             MERN TO-DO APP
           </Typography>
+          </ Link>
         <Link to="/create">
           <Button color="inherit" >
           Create
