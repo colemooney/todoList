@@ -97,6 +97,7 @@ export default class CreateTodo extends Component {
             spacing={2}
             noValidate
             autoComplete="off"
+            onSubmit={this.onSubmit}
           >
               <h2> Create To-Do </ h2>
             <TextField
@@ -105,6 +106,8 @@ export default class CreateTodo extends Component {
               label="Description"
               
               variant="outlined"
+              value={this.state.todo_description}
+              onChange={this.onChangeTodoDescription}
               
             />
             <TextField
@@ -113,6 +116,8 @@ export default class CreateTodo extends Component {
               label="Responsible"
               
               variant="outlined"
+              value={this.state.todo_responsible}
+              onChange={this.onChangeTodoResponsible}
             />
             <FormControl component="fieldset">
                 
@@ -123,12 +128,12 @@ export default class CreateTodo extends Component {
                  name="radio-buttons-group"
                  
                >
-              <FormControlLabel value="High" control={<Radio />} label="High" />
-              <FormControlLabel value="Medium" control={<Radio />} label="Medium" />
-              <FormControlLabel value="Low" control={<Radio />} label="Low" />
+              <FormControlLabel value="High" control={<Radio />} label="High" checked={this.state.todo_priority==='Low'} onChange={this.onChangeTodoPriority} />
+              <FormControlLabel value="Medium" control={<Radio />} label="Medium" checked={this.state.todo_priority==='Medium'} onChange={this.onChangeTodoPriority} />
+              <FormControlLabel value="Low" control={<Radio />} label="Low" checked={this.state.todo_priority==='High'} onChange={this.onChangeTodoPriority} />
              </RadioGroup>
     </FormControl>
-    <Button variant="contained">Submit</Button>
+    <Button type="submit" variant="contained">Submit</Button>
           </Stack>
           </Box>
         )
