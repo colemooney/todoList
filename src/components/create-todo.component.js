@@ -78,7 +78,7 @@ export default class CreateTodo extends Component {
             alignContent: 'center',
             marginTop: 5,
             borderRadius: 5,
-            backgroundColor: '#3f51b5',
+            backgroundColor: '#f5f5f5',
             
         
           }}
@@ -89,7 +89,7 @@ export default class CreateTodo extends Component {
             <Stack
             component="form"
             sx={{
-              color: '#f5f5f5',
+              
               display: 'flex',
               justifyContent: 'Center',
               alignItems: 'Center',
@@ -100,18 +100,15 @@ export default class CreateTodo extends Component {
           >
               <h2> Create To-Do </ h2>
             <TextField
-              color="success"
+              
               id="outlined-basic"
               label="Description"
               
-             focused
+              variant="outlined"
               
             />
             <TextField
-              sx={{
-                color: '#f5f5f5',
-                
-              }}
+              
               id="outlined-basic"
               label="Responsible"
               

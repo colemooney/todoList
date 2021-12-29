@@ -25,7 +25,7 @@ const Header = () =>{
     
   
     return (
-      <AppBar position="static">
+      <AppBar position="sticky" color="inherit">
         <Toolbar>
           
            <Link to="/">
