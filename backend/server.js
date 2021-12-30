@@ -42,6 +42,7 @@ todoRoutes.route('/add').post(function(req, res) {
     todo.save()
         .then(todo => {
             res.status(200).json({'todo': 'todo added successfully'});
+            
         })
         .catch(err => {
             res.status(400).send('adding new todo failed');

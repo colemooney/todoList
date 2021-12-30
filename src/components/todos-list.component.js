@@ -15,9 +15,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Todo = props => (
     <Item>
-        <p>{props.todo.todo_description}</p>
-        <p>{props.todo.todo_responsible}</p>
-        <p>{props.todo.todo_priority}</p>
+        <h2>{props.todo.todo_description}</h2>
+        <p>Made by: {props.todo.todo_responsible}</p>
+        <p>{props.todo.todo_priority} Priority</p>
         <p>
             <Link to={"/edit/"+props.todo._id}>Edit</Link>
         </p>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -16,6 +17,9 @@ import { createTheme } from '@mui/material/styles';
 
 
 export default class CreateTodo extends Component {
+
+    
+
     constructor(props) {
         super(props);
 
@@ -31,6 +35,8 @@ export default class CreateTodo extends Component {
             todo_completed: false
         }
     }
+
+   
 
     onChangeTodoDescription(e) {
         this.setState({
@@ -49,8 +55,9 @@ export default class CreateTodo extends Component {
             todo_priority: e.target.value
         });
     }
-
+    
     onSubmit(e) {
+        
         e.preventDefault();
 
         console.log(`Form submitted:`);
@@ -66,8 +73,15 @@ export default class CreateTodo extends Component {
             todo_completed: this.state.todo_completed
         };
 
+
         axios.post('http://localhost:4000/todos/add', newTodo)
-            .then(res => console.log(res.data));
+            .then(res => {
+                console.log(res.data);
+                
+                
+            });
+
+        
 
 
         this.setState({
@@ -76,6 +90,8 @@ export default class CreateTodo extends Component {
             todo_priority: '',
             todo_completed: false
         })
+
+       
     }
 
     render() {
