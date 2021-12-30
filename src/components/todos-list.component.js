@@ -1,13 +1,62 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+const Todo = props => (
+    <Item>
+        <p>{props.todo.todo_description}</p>
+        <p>{props.todo.todo_responsible}</p>
+        <p>{props.todo.todo_priority}</p>
+        <p>
+            <Link to={"/edit/"+props.todo._id}>Edit</Link>
+        </p>
+    </Item>
+)
 
 export default class TodosList extends Component {
-    componentDidMount(){
-        console.log("Working");
+    constructor(props) {
+        super(props);
+        this.state = {todos: []};
     }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/todos/')
+            .then(response => {
+                this.setState({ todos: response.data });
+                console.log(this.todoList());
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    todoList() {
+        return this.state.todos.map(function(currentTodo, i){
+            return <Todo todo={currentTodo} key={i} />;
+        })
+    }
+
     render() {
         return (
             <div>
                 <p>Welcome to Todos List Component!!</p>
+
+                <Stack spacing={2}>
+                    
+                    { this.todoList() }
+                    
+                </Stack>
             </div>
         )
     }
