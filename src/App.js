@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
 import Header from "./components/header"
 
@@ -18,7 +18,9 @@ class App extends Component {
       
       <Routes>
         <Route path="/" exact element={<TodosList />} />
-        <Route path="/edit/:id" element={<EditTodo />} />
+        {/* passing props for axios get using ID */}
+        <Route path="/edit/:id" element={<EditTodo/>} />
+        {/* passing props for axios get using ID */}
         <Route path="/create" element={<CreateTodo />} />
       </Routes>
       </div>

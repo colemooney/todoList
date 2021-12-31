@@ -26,6 +26,7 @@ todoRoutes.route('/').get(function(req, res) {
         if (err) {
             console.log(err);
         } else {
+            console.log(todos, "todos");
             res.json(todos);
         }
     });
@@ -33,6 +34,7 @@ todoRoutes.route('/').get(function(req, res) {
 todoRoutes.route('/:id').get(function(req, res) {
     let id = req.params.id;
     Todo.findById(id, function(err, todo) {
+        console.log(todo);
         res.json(todo);
     });
 });
