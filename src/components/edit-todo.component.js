@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { withRouter } from "react-router-dom";
 
 
 import Stack from '@mui/material/Stack';
@@ -33,7 +34,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-       console.log("hey");
+       console.log("hey", this.state);
        
         axios.get(`http://localhost:4000/todos/${this.state.id}`)
             .then(response => {
@@ -47,6 +48,7 @@ export default class EditTodo extends Component {
             .catch(function(error) {
                 console.log(error)
             })
+            console.log("hey 2", this.state);
     }
 
     onChangeTodoDescription(e) {
@@ -81,10 +83,10 @@ export default class EditTodo extends Component {
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
-        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+        axios.post(`http://localhost:4000/todos/update/${this.state.id}`, obj)
             .then(res => console.log(res.data));
 
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
     render() {
         return (
@@ -99,7 +101,7 @@ export default class EditTodo extends Component {
             borderRadius: 5,
             backgroundColor: '#f5f5f5',
           }}>
-          <Stack
+          {/* <Stack
             component="form"
             sx={{
               
@@ -147,7 +149,7 @@ export default class EditTodo extends Component {
              </RadioGroup>
     </FormControl>
     <Button type="submit" variant="contained">Submit</Button>
-          </Stack>
+          </Stack> */}
           </Box>
         )
     }
