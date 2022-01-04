@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
 import './App.css';
 import Header from "./components/header"
 
@@ -16,10 +17,12 @@ class App extends Component {
       <Header />
       <div className="App">
       
-      <Routes>
+      <Routes basename='http://localhost:3000'>
         <Route path="/" exact element={<TodosList />} />
         {/* passing props for axios get using ID */}
-        <Route path="/edit/:id" element={<EditTodo/>} />
+        
+        <Route exact path="/edit/:id" element={<EditTodo/>} />
+        
         {/* passing props for axios get using ID */}
         <Route path="/create" element={<CreateTodo />} />
       </Routes>

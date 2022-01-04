@@ -34,7 +34,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-       console.log("hey", this.state);
+       console.log("hey", this.state, "ID", this.props.match );
        
         axios.get(`http://localhost:4000/todos/${this.state.id}`)
             .then(response => {
