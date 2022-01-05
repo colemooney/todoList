@@ -17,11 +17,11 @@ class App extends Component {
       <Header />
       <div className="App">
       
-      <Routes basename='http://localhost:3000'>
+      <Routes >
         <Route path="/" exact element={<TodosList />} />
         {/* passing props for axios get using ID */}
         
-        <Route exact path="/edit/:id" element={<EditTodo/>} />
+        <Route path="/edit/:id" element={<EditTodo/>} />
         
         {/* passing props for axios get using ID */}
         <Route path="/create" element={<CreateTodo />} />

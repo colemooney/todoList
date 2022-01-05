@@ -15,7 +15,7 @@ import axios from 'axios';
 
 
 
-export default class EditTodo extends Component {
+class EditTodo extends Component {
     constructor(props) {
         super(props);
 
@@ -26,6 +26,7 @@ export default class EditTodo extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            todo_id: this.props.match.params.id,
             todo_description: '',
             todo_responsible: '',
             todo_priority: '',
@@ -34,7 +35,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-       console.log("hey", this.state, "ID", this.props.match );
+       console.log("hey", this.state, "ID", this.props.match.params.id );
        
         axios.get(`http://localhost:4000/todos/${this.state.id}`)
             .then(response => {
@@ -154,3 +155,4 @@ export default class EditTodo extends Component {
         )
     }
 }
+export default EditTodo;
