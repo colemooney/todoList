@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 
 import Stack from '@mui/material/Stack';
@@ -13,9 +13,14 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 
+import Paper from '@mui/material/Paper';
+
+import { styled } from '@mui/material/styles';
 
 
-class EditTodo extends Component {
+
+
+export default class EditTodo extends Component {
     constructor(props) {
         super(props);
 
@@ -24,9 +29,9 @@ class EditTodo extends Component {
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
+        
         this.state = {
-            todo_id: this.props.match.params.id,
+           
             todo_description: '',
             todo_responsible: '',
             todo_priority: '',
@@ -35,7 +40,7 @@ class EditTodo extends Component {
     }
 
     componentDidMount() {
-       console.log("hey", this.state, "ID", this.props.match.params.id );
+       console.log("hey", this.props, "ID");
        
         axios.get(`http://localhost:4000/todos/${this.state.id}`)
             .then(response => {
@@ -155,4 +160,3 @@ class EditTodo extends Component {
         )
     }
 }
-export default EditTodo;

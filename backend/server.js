@@ -7,6 +7,7 @@ const todoRoutes = express.Router();
 const PORT = 4000;
 
 let Todo = require('./todo.model');
+const { NextWeek } = require('@material-ui/icons');
 
 
 app.use(cors());
@@ -26,16 +27,24 @@ todoRoutes.route('/').get(function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log(todos, "todos");
+            // console.log(todos, "todos");
             res.json(todos);
         }
     });
 });
 todoRoutes.route('/:id').get(function(req, res) {
-    let id = req.params.id;
-    Todo.findById(id, function(err, todo) {
-        console.log(todo);
-        res.json(todo);
+     
+    console.log(req.params.id, "=======");
+    Todo.findById({
+        id: req.params.id
+    })
+    .then(function(todo){
+        if(!todo) {
+            var err = new Error('Not Found');
+            err.status = 404;
+            console.log(err);
+        } else
+            res.render('editTodo', {todo: todo});
     });
 });
 

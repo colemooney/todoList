@@ -22,6 +22,7 @@ const Todo = props => (
             <Link to={"/edit/"+props.todo._id}>Edit</Link>
         </p>
     </Item>
+
 )
 
 export default class TodosList extends Component {
@@ -34,7 +35,7 @@ export default class TodosList extends Component {
         axios.get('http://localhost:4000/todos/')
             .then(response => {
                 this.setState({ todos: response.data });
-                console.log(this.todoList());
+                console.log("hahahahahha", this.state);
             })
             .catch(function (error){
                 console.log(error);
